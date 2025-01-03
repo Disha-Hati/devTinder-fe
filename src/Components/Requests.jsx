@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import {addRequest, removeRequest} from "../utils/requestSlice";
+import { BASE_URL } from "../utils/constants";
 
 const Requests = () => {
 
@@ -26,7 +27,7 @@ const Requests = () => {
 
     const reviewRequest=async(status,_id)=>{
         try{
-            await axios.post("http://localhost:3000/request/review/"+status+"/"+_id,{},{withCredentials:true});
+            await axios.post(BASE_URL+"request/review/"+status+"/"+_id,{},{withCredentials:true});
             dispatch(removeRequest(_id));
             setToast(true);
             setTimeout(()=>{

@@ -4,6 +4,7 @@ import UserCard from "./UserCard";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BASE_URL } from "../utils/constants";
 
 const EditProfile = ({user}) => {
 
@@ -21,7 +22,7 @@ const EditProfile = ({user}) => {
     const saveProfile=async ()=>{
         setError("")
         try{
-            const res=await axios.patch("http://localhost:3000/profile/edit",{firstName,lastName,age,gender,photo,about},{withCredentials:true});
+            const res=await axios.patch(BASE_URL+"profile/edit",{firstName,lastName,age,gender,photo,about},{withCredentials:true});
             //console.log(res);
             dispatch(addUser(res?.data?.data));
             setToast(true);
