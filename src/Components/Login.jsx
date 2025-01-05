@@ -33,7 +33,7 @@ const Login = () => {
 
   const handleSignUp=async ()=>{
     try{
-      const res=await axios.post("http://localhost:3000/signup",{firstName,lastName,email,password},{withCredentials:true});
+      const res=await axios.post(BASE_URL+"signup",{firstName,lastName,email,password},{withCredentials:true});
       dispatch(addUser(res.data.data));
         navigate("/profile");
 
